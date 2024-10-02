@@ -1,4 +1,5 @@
-console.log("hello mtrfcker")
+let humanScore=0;
+let computerScore=0;
 function getComputerChoice(){
     switch (Math.floor(Math.random()*3))
     {
