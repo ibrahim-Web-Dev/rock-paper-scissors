@@ -99,7 +99,7 @@ function playGame(){
     }
 
 
-
+    // gg
     if (humanScore>computerScore){
         console.log("You win the score is " +humanScore+ " - "+computerScore)
     }
