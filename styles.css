@@ -1,0 +1,14 @@
+ul{
+    display:flex;
+    flex-grow: 1;
+    justify-content:space-around ;
+}
+button{
+    width: 150px;
+    height: 50px;
+}
+.scores{
+    display:flex;
+    background-color: aqua;
+    justify-content: space-around;
+}

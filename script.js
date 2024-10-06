@@ -25,65 +25,81 @@ function getHumanChoice(){
             return getHumanChoice()
     }
 }
+
 function playGame(){
     let humanScore=0;
     let computerScore=0;
-    function playRound(humanChoice, computerChoice){
-        console.log("Human choice is " + humanChoice + " computer choice is "+ computerChoice)
-        switch (humanChoice){
-        case "rock":
-            switch (computerChoice){
-                case "rock":
-                    console.log("draw")
-                    break
-                case "paper":
-                    console.log("you lose")
-                    computerScore++
-                    break
-                case "scissor":
-                    console.log("you win")
-                    humanScore++
-                    break
-        }
-            break;
-        case "paper":
-            switch (computerChoice){
-                case "rock":
-                    console.log("you win")
-                    humanScore++
-                    break;
-                case "paper":
-                    console.log("draw")
-                    break;
-                case "scissor":
-                    console.log("you lose")
-                    computerScore++
-                    break;
-        }
-            break;
-        case "scissor":
-            switch (computerChoice){
+    const rock = document.querySelector("#rock")
+    const paper = document.querySelector("#paper")
+    const scissor = document.querySelector("#scissor")
+    const humanScoreShow=document.querySelector("#humanScore")
+    const computerScoreShow=document.querySelector("#computerScore")
+    const humanChoiceShow=document.querySelector("#humanChoice")
+    const computerChoiceShow=document.querySelector("#computerChoice")
+    rock.addEventListener("click",makeHandlerWithParams("rock"))
+    paper.addEventListener("click",makeHandlerWithParams("paper"))
+    scissor.addEventListener("click",makeHandlerWithParams("scissor"))
+    function makeHandlerWithParams(humanChoice, computerChoice){
+        return   function(){
+            computerChoice=getComputerChoice()
+            console.log("Human choice is " + humanChoice + " computer choice is "+ computerChoice)
+            switch (humanChoice){
             case "rock":
-                console.log("you lose")
-                computerScore++
+                switch (computerChoice){
+                    case "rock":
+                        console.log("draw")
+                        break
+                    case "paper":
+                        console.log("you lose")
+                        computerScore++
+                        break
+                    case "scissor":
+                        console.log("you win")
+                        humanScore++
+                        break
+            }
                 break;
             case "paper":
-                console.log("you win")
-                humanScore++
+                switch (computerChoice){
+                    case "rock":
+                        console.log("you win")
+                        humanScore++
+                        break;
+                    case "paper":
+                        console.log("draw")
+                        break;
+                    case "scissor":
+                        console.log("you lose")
+                        computerScore++
+                        break;
+            }
                 break;
             case "scissor":
-                console.log("draw")
-                break;
+                switch (computerChoice){
+                case "rock":
+                    console.log("you lose")
+                    computerScore++
+                    break;
+                case "paper":
+                    console.log("you win")
+                    humanScore++
+                    break;
+                case "scissor":
+                    console.log("draw")
+                    break;
+                }
             }
+        console.log("your score is " +humanScore+ " computer score is " + computerScore + " good match.")
+        console.log("")
+        humanScoreShow.textContent=humanScore
+        computerScoreShow.textContent=computerScore
+        humanChoiceShow.textContent=humanChoice
+        computerChoiceShow.textContent=computerChoice
         }
-    console.log("your score is " +humanScore+ " computer score is " + computerScore + " good match.")
-    console.log("")
     }
-    playRound(getHumanChoice(),getComputerChoice())
-    playRound(getHumanChoice(),getComputerChoice())
-    playRound(getHumanChoice(),getComputerChoice())
-    playRound(getHumanChoice(),getComputerChoice())
-    playRound(getHumanChoice(),getComputerChoice())
+
+
+
     if (humanScore>computerScore){
         console.log("You win the score is " +humanScore+ " - "+computerScore)
     }
@@ -94,4 +110,5 @@ function playGame(){
         console.log("Draw the score is " +humanScore+ " - "+computerScore)
     }
 }
+
 playGame()
